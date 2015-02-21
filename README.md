@@ -1,1 +1,1 @@
-# spring_study
+Spring framework study samples.

@@ -1,0 +1,1 @@
+Simple batch program which reads array of values in chunk (Reader, Processor and Writer) mode.

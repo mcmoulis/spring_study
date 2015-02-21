@@ -1,0 +1,36 @@
+<configuration debug="true" scan="true" scanPeriod="10 seconds">
+
+	<property name="logback.defaultlogdir" value="target/logs/" />
+	<property name="logback.rollingPattern" value="%d{yyyy-MM-dd}" />
+	<property name="logback.fullPattern" value="%d [%thread] %level %logger - %msg%n" />
+
+	<appender name="LOGFILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${logback.logdir:-${logback.defaultlogdir}}/app.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<fileNamePattern>${logback.logdir:-${logback.defaultlogdir}}/app.log.${logback.rollingPattern}
+			</fileNamePattern>
+			<!-- keep 30 days worth of history -->
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>${logback.fullPattern}</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
+		<encoder>
+			<pattern>${logback.fullPattern}</pattern>
+		</encoder>
+	</appender>
+
+	<root level="${root-level:-INFO}">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="LOGFILE" />
+	</root>
+
+</configuration>
