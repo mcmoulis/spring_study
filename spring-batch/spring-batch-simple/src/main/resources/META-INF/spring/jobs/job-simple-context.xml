@@ -8,17 +8,22 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<context:annotation-config />
-	
-	<bean id="reader" class="com.mcms.study.spring.batch.job.simple.SimpleItemReader"/>
-	<bean id="processor" class="com.mcms.study.spring.batch.job.simple.SimpleItemProcessor" />
-	<bean id="writer" class="com.mcms.study.spring.batch.job.simple.SimpleItemWriter"/>
+
+	<bean id="simpleReader" class="com.mcms.study.spring.batch.job.simple.SimpleReader" />
+	<bean id="simpleProcessor" class="com.mcms.study.spring.batch.job.simple.SimpleProcessor" />
+	<bean id="simpleWriter" class="com.mcms.study.spring.batch.job.simple.SimpleWriter" />
+
+	<bean id="simpleTasklet" class="com.mcms.study.spring.batch.job.simple.SimpleTasklet" />
 
 	<batch:job id="jobSimple">
-		<batch:step id="step">
+		<batch:step id="step" next="stepEnd">
 			<batch:tasklet>
-				<batch:chunk reader="reader" processor="processor"
-					writer="writer" commit-interval="3" />
+				<batch:chunk reader="simpleReader" processor="simpleProcessor"
+					writer="simpleWriter" commit-interval="3" />
 			</batch:tasklet>
+		</batch:step>
+		<batch:step id="stepEnd">
+			<batch:tasklet ref="simpleTasklet" />
 		</batch:step>
 	</batch:job>
 
