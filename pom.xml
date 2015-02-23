@@ -17,6 +17,7 @@
   	</description>
 	<properties>
 		<java.version>1.7</java.version>
+		<spring-batch.version>3.0.3.RELEASE</spring-batch.version>
 	</properties>
 	<modules>
 		<module>spring-batch</module>

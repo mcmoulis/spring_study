@@ -13,7 +13,11 @@ public class SimpleTasklet implements Tasklet {
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-        LOGGER.info("Size of array used by reader: {}", SimpleReader.SOURCE_ARRAY.length);
+        int stepExecutionsCount = chunkContext.getStepContext().getStepExecution().getJobExecution().getStepExecutions().size();
+        LOGGER.info("Total steps executed: {}", stepExecutionsCount - 1);
+        if (stepExecutionsCount == 1) {
+            throw new Exception("Improper job execution.");
+        }
         return RepeatStatus.FINISHED;
     }
 }
