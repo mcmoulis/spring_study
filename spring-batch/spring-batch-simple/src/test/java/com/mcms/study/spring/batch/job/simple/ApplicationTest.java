@@ -30,8 +30,7 @@ public class ApplicationTest {
     @Test
     public void testStep() throws Exception {
         ExitStatus status = jobLauncherTestUtils.launchStep("stepEnd").getExitStatus();
-        Assert.assertEquals(ExitStatus.FAILED.getExitCode(), status.getExitCode());
-        Assert.assertNotNull(status.getExitDescription());
+        Assert.assertEquals(ExitStatus.COMPLETED, status);
     }
 
 }

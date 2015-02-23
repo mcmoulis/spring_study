@@ -1,5 +1,7 @@
 package com.mcms.study.spring.batch.job.simple;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.StepContribution;
@@ -13,9 +15,11 @@ public class SimpleTasklet implements Tasklet {
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-        int stepExecutionsCount = chunkContext.getStepContext().getStepExecution().getJobExecution().getStepExecutions().size();
-        LOGGER.info("Total steps executed: {}", stepExecutionsCount - 1);
-        if (stepExecutionsCount == 1) {
+        List<Throwable> jobFailureExceptions = chunkContext.getStepContext().getStepExecution().getJobExecution().getFailureExceptions();
+        for (Throwable throwable : jobFailureExceptions) {
+            LOGGER.info("Occurred exception: {}", throwable);
+        }
+        if (!jobFailureExceptions.isEmpty()) {
             throw new Exception("Improper job execution.");
         }
         return RepeatStatus.FINISHED;
