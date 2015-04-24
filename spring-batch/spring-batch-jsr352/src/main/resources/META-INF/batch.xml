@@ -1,0 +1,5 @@
+<batch-artifacts xmlns="http://xmlns.jcp.org/xml/ns/javaee">
+	<ref id="reader" class="com.mcms.study.spring.batch.job.simple.SimpleFileReader" />
+	<ref id="processor" class="com.mcms.study.spring.batch.job.simple.SimpleProcessor" />
+	<ref id="writer" class="com.mcms.study.spring.batch.job.simple.SimpleWriter" />
+</batch-artifacts>

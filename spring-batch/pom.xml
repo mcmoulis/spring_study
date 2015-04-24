@@ -14,9 +14,15 @@
 		Samples of Spring Batch.
   	</description>
 	<modules>
+		<module>spring-batch-common</module>
 		<module>spring-batch-simple</module>
+		<module>spring-batch-jsr352</module>
 	</modules>
 	<dependencies>
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-batch</artifactId>
@@ -25,10 +31,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
-		<!-- <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency> -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>

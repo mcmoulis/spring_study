@@ -3,7 +3,9 @@ package com.mcms.study.spring.batch.job.simple;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemReader;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SimpleReader implements ItemReader<String> {
     private static final Logger log = LoggerFactory.getLogger(SimpleReader.class);
 

@@ -12,14 +12,28 @@
 
 	<context:component-scan base-package="com.mcms.study.spring.batch.job.simple" />
 
-	<batch:job id="jobSimple">
-		<batch:step id="stepBegin" next="stepEnd">
+	<bean id="chunkTimeout" class="org.springframework.batch.repeat.policy.TimeoutTerminationPolicy">
+		<constructor-arg value="3" />
+	</bean>
+
+	<bean id="commitCount" class="org.springframework.batch.repeat.policy.SimpleCompletionPolicy">
+		<property name="chunkSize" value="5" />
+	</bean>
+
+	<bean id="chunkCompletionPolicy" class="org.springframework.batch.repeat.policy.CompositeCompletionPolicy">
+		<property name="policies">
+			<util:list>
+				<ref bean="chunkTimeout" />
+				<ref bean="commitCount" />
+			</util:list>
+		</property>
+	</bean>
+
+	<batch:job id="jobWithCompositePolicy">
+		<batch:step id="stepComposite">
 			<batch:tasklet>
-				<batch:chunk reader="simpleReader" processor="simpleProcessor" writer="simpleWriter" commit-interval="3" />
+				<batch:chunk reader="simpleReader" processor="simpleProcessor" writer="simpleWriter" chunk-completion-policy="chunkCompletionPolicy" />
 			</batch:tasklet>
-		</batch:step>
-		<batch:step id="stepEnd">
-			<batch:tasklet ref="simpleTasklet" />
 		</batch:step>
 	</batch:job>
 

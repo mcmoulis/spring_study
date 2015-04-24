@@ -16,8 +16,9 @@
 		Spring Study.
   	</description>
 	<properties>
-		<java.version>1.7</java.version>
+		<java.version>1.8</java.version>
 		<spring-batch.version>3.0.3.RELEASE</spring-batch.version>
+		<javax.inject.version>1.0-PFD-1</javax.inject.version>
 	</properties>
 	<modules>
 		<module>spring-batch</module>
@@ -30,6 +31,11 @@
 				<version>1.2.1.RELEASE</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.inject</groupId>
+				<artifactId>javax.inject</artifactId>
+				<version>${javax.inject.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
