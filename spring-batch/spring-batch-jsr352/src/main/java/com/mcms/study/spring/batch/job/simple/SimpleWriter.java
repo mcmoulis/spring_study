@@ -32,7 +32,7 @@ public class SimpleWriter implements ItemWriter {
 
     @Override
     public void writeItems(List<Object> items) throws Exception {
-        items.stream().forEach(item -> log.info("Received item {}", item));
+        items.stream().forEach(item -> log.info("Item with WRITER: {}", item));
     }
 
 }

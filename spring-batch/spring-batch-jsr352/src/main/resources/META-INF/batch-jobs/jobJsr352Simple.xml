@@ -6,7 +6,7 @@
 		<chunk item-count="5">
 			<reader ref="reader">
 				<properties>
-					<property name="fileName" value="src/main/resources/sample.txt" />
+					<property name="fileName" value="src/main/resources/testdata/sample.txt" />
 				</properties>
 			</reader>
 			<processor ref="processor" />

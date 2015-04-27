@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                              http://www.springframework.org/schema/beans/spring-beans.xsd
+                              http://xmlns.jcp.org/xml/ns/javaee
+                              http://xmlns.jcp.org/xml/ns/javaee/jobXML_1_0.xsd">
+
+	<bean id="readerBean" class="com.mcms.study.spring.batch.job.simple.PartitionedItemReader" scope="step" />
+	<bean id="processorBean" class="com.mcms.study.spring.batch.job.simple.SimpleProcessor" />
+
+	<job id="jobJsr352Partition" xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="1.0">
+		<step id="chunkStep">
+			<chunk item-count="3">
+				<reader ref="readerBean">
+					<properties>
+						<property name="key" value="#{partitionPlan['key']}" />
+					</properties>
+				</reader>
+				<processor ref="processor" />
+				<writer ref="writer" />
+			</chunk>
+			<partition>
+				<plan partitions="2" threads="2">
+					<properties partition="0">
+						<property name="key" value="key1" />
+					</properties>
+					<properties partition="1">
+						<property name="key" value="key2" />
+					</properties>
+				</plan>
+			</partition>
+		</step>
+	</job>
+</beans>

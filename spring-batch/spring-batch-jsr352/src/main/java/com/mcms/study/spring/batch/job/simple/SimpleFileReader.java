@@ -3,7 +3,6 @@ package com.mcms.study.spring.batch.job.simple;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 import javax.batch.api.BatchProperty;
 import javax.batch.api.chunk.ItemReader;
@@ -50,7 +49,7 @@ public class SimpleFileReader implements ItemReader {
     public Object readItem() throws Exception {
         lineNumber++;
         String line = lineReader.readLine();
-        log.info("Read line {} at {}", line, LocalDateTime.now());
+        log.info("Item from READER: {}", line);
         return line;
     }
 
