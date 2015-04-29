@@ -9,7 +9,13 @@
 	<artifactId>spring-batch-flow</artifactId>
 	<name>${project.artifactId}</name>
 	<description>
-		Splits and Flow examples.
+		Sequential Flow
+		Conditional Flow
+		End on Condition
+		Fail on Condition
+		Stop on Condition
+		Programmatic flow decision
+		Reuse Flow.
   	</description>
 	<dependencies>
 		<dependency>

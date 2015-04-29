@@ -9,7 +9,7 @@
 	<artifactId>spring-batch-exception</artifactId>
 	<name>${project.artifactId}</name>
 	<description>
-		Exceptions and Skips.
+		Exception handling examples: Rollback, Skip and Retry.
   	</description>
 	<dependencies>
 		<dependency>

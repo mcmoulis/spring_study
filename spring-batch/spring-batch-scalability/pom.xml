@@ -9,7 +9,10 @@
 	<artifactId>spring-batch-scalability</artifactId>
 	<name>${project.artifactId}</name>
 	<description>
-		Multithreading, Parallel steps, Remote Chunking and partitioning examples.
+		Multithreaded steps
+		Parallel steps
+		Remote Chunking of Step
+		Partitioning a step
   	</description>
 	<dependencies>
 		<dependency>
