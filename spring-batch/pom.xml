@@ -17,6 +17,11 @@
 		<module>spring-batch-common</module>
 		<module>spring-batch-simple</module>
 		<module>spring-batch-jsr352</module>
+		<module>spring-batch-exception</module>
+		<module>spring-batch-scheduler</module>
+		<module>spring-batch-flow</module>
+		<module>spring-batch-interceptor</module>
+		<module>spring-batch-scalability</module>
 	</modules>
 	<dependencies>
 		<dependency>
