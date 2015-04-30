@@ -21,4 +21,13 @@
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
+	<developers>
+		<developer>
+			<id>pmhegde</id>
+			<name>Pradeep Hegde</name>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+	</developers>
 </project>
