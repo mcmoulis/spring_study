@@ -18,4 +18,13 @@
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
+	<developers>
+		<developer>
+			<id>chaitrawarad</id>
+			<name>Chaitra Warad</name>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+	</developers>
 </project>
