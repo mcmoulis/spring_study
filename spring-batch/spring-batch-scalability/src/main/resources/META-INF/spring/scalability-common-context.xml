@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:batch="http://www.springframework.org/schema/batch" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<import resource="classpath:META-INF/spring/common-test-context.xml" />
+
+	<jdbc:initialize-database data-source="dataSource">
+		<jdbc:script location="classpath:sql/user.sql" />
+	</jdbc:initialize-database>
+
+	<bean id="itemWriter" class="com.mcms.study.spring.batch.scalability.writer.UserWriter"/>
+
+	<bean id="itemProcessor" class="com.mcms.study.spring.batch.scalability.processor.UserProcessor"/>
+
+	<bean id="itemReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+	<property name="resource" value="classpath:data/input.txt" />
+		<property name="linesToSkip" value="1" />
+		<property name="saveState" value="false" />
+		<property name="lineMapper">
+			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+				<property name="lineTokenizer">
+					<bean class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+						<property name="names" value="firstName,lastName,userName" />
+					</bean>
+				</property>
+				<property name="fieldSetMapper">
+					<bean class="com.mcms.study.spring.batch.scalability.reader.UserFieldSetMapper" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<!-- <bean id="multiResourceReader" class="org.springframework.batch.item.file.MultiResourceItemReader">
+		<property name="resources" value="classpath:data/*.txt" /> 
+		<property name="delegate" ref="itemReader" />
+		<property name="saveState" value="false" />
+	</bean> -->
+	
+</beans>

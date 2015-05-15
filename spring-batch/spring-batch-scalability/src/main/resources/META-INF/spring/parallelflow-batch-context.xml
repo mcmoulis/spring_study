@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:batch="http://www.springframework.org/schema/batch" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:util="http://www.springframework.org/schema/util" 
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<import resource="classpath:META-INF/spring/common-test-context.xml" />
+	<import resource="classpath:META-INF/spring/scalability-common-context.xml" />
+
+	<bean id="asyncTaskExecutor" class="org.springframework.core.task.SimpleAsyncTaskExecutor" />
+
+	<batch:job id="importUserDataParallelFlow">
+		<batch:split id="parallelFlow" task-executor="asyncTaskExecutor">
+			<batch:flow>
+				<batch:step id="loadUserFromFlatFile">
+					<batch:tasklet>
+						<batch:chunk reader="itemReader" processor="itemProcessor" writer="itemWriter" commit-interval="1" />
+					</batch:tasklet>
+				</batch:step>
+			</batch:flow>
+			<batch:flow>
+				<batch:step id="loadUserFromXmlFile">
+					<batch:tasklet>
+						<batch:chunk reader="xmlItemReader" processor="itemProcessor" writer="itemWriter" commit-interval="1" />
+					</batch:tasklet>
+				</batch:step>
+			</batch:flow>
+		</batch:split>
+	</batch:job>
+
+	<bean id="xmlItemReader" class="org.springframework.batch.item.xml.StaxEventItemReader">
+		<property name="fragmentRootElementName" value="user" />
+		<property name="resource" value="classpath:data/input.xml" />
+		<property name="unmarshaller" ref="userMarshaller" />
+	</bean>
+
+	<bean id="userMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller">
+		<property name="aliases">
+			<util:map id="aliases">
+				<entry key="user" value="com.mcms.study.spring.batch.scalability.reader.User" />
+				<entry key="firstName" value="java.lang.String" />
+				<entry key="lastName" value="java.lang.String" />
+				<entry key="userName" value="java.lang.String" />
+			</util:map>
+		</property>
+	</bean>
+
+</beans>

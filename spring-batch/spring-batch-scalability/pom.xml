@@ -20,6 +20,10 @@
 			<artifactId>spring-batch-common</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-oxm</artifactId>
+		</dependency>
 	</dependencies>
 	<developers>
 		<developer>
