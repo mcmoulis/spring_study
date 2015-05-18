@@ -11,16 +11,42 @@
 	<description>
 		Scheduler examples.
   	</description>
+	<properties>
+		<quartz.version>2.2.1</quartz.version>
+		<joda-time.version>2.3</joda-time.version>
+		<commons-io.version>2.4</commons-io.version>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>spring-batch-common</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+		</dependency>
+		<!-- Quartz framework -->
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>${quartz.version}</version>
+		</dependency>
+		<!-- Joda-Time -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+		</dependency>
+		<!-- commons-io -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons-io.version}</version>
+		</dependency>
 	</dependencies>
 	<developers>
 		<developer>
-			<id>anuragchaitra</id>
+			<id>anurag</id>
 			<name>Anurag Kumar</name>
 			<roles>
 				<role>developer</role>
