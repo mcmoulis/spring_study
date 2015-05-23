@@ -24,13 +24,16 @@
 					</listeners>
 				</chunk>
 				<listeners>
-					<listener ref="customJobExecutionListener" />
-					<listener ref="customStepListener" />
+					<listener ref="customStepExecutionListener" />
 					<listener ref="customItemReaderListener" />
+					<listener ref="customItemProcessListener" />
 					<listener ref="customItemWriterListener" />
 				</listeners>
 			</tasklet>
 		</step>
+		<listeners>
+			<listener ref="customJobExecutionListener" />
+		</listeners>
 	</job>
 
 </beans>
