@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:batch="http://www.springframework.org/schema/batch" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:component-scan base-package="com.mcms.study.spring.batch.interceptors" />
+
+	<job id="jobInterceptorsDemo" xmlns="http://www.springframework.org/schema/batch">
+		<step id="readMultipleFileStep">
+			<tasklet>
+				<chunk reader="simpleReader" processor="simpleProcessor" writer="simpleWriter" commit-interval="3" skip-limit="2"
+					retry-limit="2" processor-transactional="false">
+					<skippable-exception-classes>
+						<include class="com.mcms.study.spring.batch.interceptors.CustomException" />
+					</skippable-exception-classes>
+					<retryable-exception-classes>
+						<include class="com.mcms.study.spring.batch.interceptors.CustomException" />
+					</retryable-exception-classes>
+					<listeners>
+						<listener ref="customSkipListener" />
+					</listeners>
+				</chunk>
+				<listeners>
+					<listener ref="customJobExecutionListener" />
+					<listener ref="customStepListener" />
+					<listener ref="customItemReaderListener" />
+					<listener ref="customItemWriterListener" />
+				</listeners>
+			</tasklet>
+		</step>
+	</job>
+
+</beans>

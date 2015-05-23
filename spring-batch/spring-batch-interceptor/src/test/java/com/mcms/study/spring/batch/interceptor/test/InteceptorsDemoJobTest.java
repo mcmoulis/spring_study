@@ -3,7 +3,6 @@ package com.mcms.study.spring.batch.interceptor.test;
 import java.util.Date;
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.batch.core.ExitStatus;
@@ -14,8 +13,8 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(locations = { "classpath:META-INF/spring/job-read-files.xml", "classpath:META-INF/spring/batch-test-context.xml" })
-public class ReadMultipleFileJobTest {
+@SpringApplicationConfiguration(locations = { "classpath:META-INF/spring/interceptors-demo-context.xml", "classpath:META-INF/spring/batch-test-context.xml" })
+public class InteceptorsDemoJobTest {
     @Autowired
     protected JobLauncherTestUtils jobLauncherTestUtils;
 
@@ -25,11 +24,4 @@ public class ReadMultipleFileJobTest {
         Assert.assertEquals(ExitStatus.COMPLETED, status);
     }
 
-    /* Enable fileDeletingTasklet in job-read-files.xml and run this test */
-    @Ignore
-    @Test
-    public void testStep() throws Exception {
-        ExitStatus status = jobLauncherTestUtils.launchStep("deleteDir").getExitStatus();
-        Assert.assertEquals(ExitStatus.COMPLETED, status);
-    }
 }
