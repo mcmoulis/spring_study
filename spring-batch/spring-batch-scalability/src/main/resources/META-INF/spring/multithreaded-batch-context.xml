@@ -10,12 +10,12 @@
 	<import resource="classpath:META-INF/spring/common-test-context.xml" />
 	<import resource="classpath:META-INF/spring/scalability-common-context.xml" />
 
-	<task:executor id="taskExecutor" pool-size="15" />
+	<task:executor id="taskExecutor" pool-size="5" />
 
 	<batch:job id="importUserDataMultithread">
 		<batch:step id="loadUserMultithread">
 			<batch:tasklet task-executor="taskExecutor">
-				<batch:chunk reader="itemReader" processor="itemProcessor" writer="itemWriter" commit-interval="1">
+				<batch:chunk reader="itemReader" processor="itemProcessor" writer="itemWriter" commit-interval="3">
 				<batch:listeners>
 						<batch:listener>
 							<bean class="com.mcms.study.spring.batch.scalability.listener.UserChunkListener"/>

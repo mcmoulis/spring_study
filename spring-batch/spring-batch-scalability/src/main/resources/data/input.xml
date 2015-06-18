@@ -1,103 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <records>
 	<user>
-		<firstName>A</firstName>
-		<lastName>B</lastName>
-		<userName>C</userName>
+		<firstName>Bhagat</firstName>
+		<lastName>Singh</lastName>
+		<userName>Bhagat.Singh</userName>
 	</user>
 	<user>
-		<firstName>A</firstName>
-		<lastName>B</lastName>
-		<userName>C</userName>
+		<firstName>Sardar</firstName>
+		<lastName>Vallabhai</lastName>
+		<userName>Patel</userName>
 	</user>
 	<user>
-		<firstName>A</firstName>
-		<lastName>B</lastName>
-		<userName>C</userName>
+		<firstName>Chandra</firstName>
+		<lastName>Shekhar</lastName>
+		<userName>Azad</userName>
 	</user>
 	<user>
-		<firstName>A</firstName>
-		<lastName>B</lastName>
-		<userName>C</userName>
-	</user>
-	<user>
-		<firstName>A</firstName>
-		<lastName>B</lastName>
-		<userName>C</userName>
-	</user>
-	<user>
-		<firstName>A</firstName>
-		<lastName>B</lastName>
-		<userName>C</userName>
-	</user>
-	<user>
-		<firstName>A</firstName>
-		<lastName>B</lastName>
-		<userName>C</userName>
-	</user>
-	<user>
-		<firstName>A</firstName>
-		<lastName>B</lastName>
-		<userName>C</userName>
-	</user>
-	<user>
-		<firstName>A</firstName>
-		<lastName>B</lastName>
-		<userName>C</userName>
-	</user>
-	<user>
-		<firstName>A</firstName>
-		<lastName>B</lastName>
-		<userName>C</userName>
-	</user>
-	<user>
-		<firstName>A</firstName>
-		<lastName>B</lastName>
-		<userName>C</userName>
-	</user>
-	<user>
-		<firstName>A</firstName>
-		<lastName>B</lastName>
-		<userName>C</userName>
-	</user>
-	<user>
-		<firstName>A</firstName>
-		<lastName>B</lastName>
-		<userName>C</userName>
-	</user>
-	<user>
-		<firstName>A</firstName>
-		<lastName>B</lastName>
-		<userName>C</userName>
-	</user>
-	<user>
-		<firstName>A</firstName>
-		<lastName>B</lastName>
-		<userName>C</userName>
-	</user>
-	<user>
-		<firstName>A</firstName>
-		<lastName>B</lastName>
-		<userName>C</userName>
-	</user>
-	<user>
-		<firstName>A</firstName>
-		<lastName>B</lastName>
-		<userName>C</userName>
-	</user>
-	<user>
-		<firstName>A</firstName>
-		<lastName>B</lastName>
-		<userName>C</userName>
-	</user>
-	<user>
-		<firstName>A</firstName>
-		<lastName>B</lastName>
-		<userName>C</userName>
-	</user>
-	<user>
-		<firstName>A</firstName>
-		<lastName>B</lastName>
-		<userName>C</userName>
+		<firstName>Richard</firstName>
+		<lastName>Matthew</lastName>
+		<userName>Stallman</userName>
 	</user>
 </records>

@@ -22,10 +22,4 @@ public class MultithreadedJobTest {
         Assert.assertEquals(ExitStatus.COMPLETED, status);
     }
 
-    @Test
-    public void testStep() throws Exception {
-        ExitStatus status = jobLauncherTestUtils.launchStep("loadUserMultithread").getExitStatus();
-        Assert.assertEquals(ExitStatus.COMPLETED, status);
-    }
-
 }
