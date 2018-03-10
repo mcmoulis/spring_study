@@ -19,7 +19,8 @@
 	</properties>
 	<modules>
 		<module>spring-batch</module>
-  </modules>
+		<module>spring-boot</module>
+	</modules>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
